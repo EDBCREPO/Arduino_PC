@@ -1,0 +1,37 @@
+<!DOCTYPE html> <html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.7/dist/js/uikit-icons.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.20.7/dist/css/uikit.min.css" />
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    
+<body class="uk-background-secondary uk-flex uk-flex-middle uk-flex-center" uk-height-viewport="expand:true" >
+
+    <div class="uk-flex uk-flex-center uk-flex-column uk-child-width-expand uk-width-expand uk-padding-small">
+        <button class="uk-button uk-button-primary uk-margin" onclick="turnLed(0,this)" state="0" > LED 1 </button>
+        <button class="uk-button uk-button-primary uk-margin" onclick="turnLed(1,this)" state="0" > LED 2 </button>
+        <button class="uk-button uk-button-primary uk-margin" onclick="turnLed(2,this)" state="0" > LED 3 </button>
+        <button class="uk-button uk-button-primary uk-margin" onclick="turnLed(3,this)" state="0" > LED 4 </button>
+    </div>
+
+    <script>
+        function turnLed( led, el ){
+            state = el.getAttribute( "state" );
+            state = state == "0" ? "1" : "0";
+
+            fetch( `/${led}/${state}` );
+
+            el.setAttribute( "state", state );
+        }
+    </script>
+
+</html>
